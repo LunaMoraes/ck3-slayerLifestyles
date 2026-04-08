@@ -1,0 +1,11 @@
+﻿slayer_lifestyle = {
+	is_highlighted = {
+		OR = {
+			has_trait = education_martial
+			has_trait = education_intrigue
+		}
+	}
+
+	xp_per_level = 1000
+	base_xp_gain = 25
+}

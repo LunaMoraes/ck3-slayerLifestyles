@@ -1,0 +1,36 @@
+﻿apex_predator = {
+	category = lifestyle
+	icon = hunter # Reusing base game icon
+
+	prowess = 5
+	martial = 2
+	advantage = 5
+	monthly_prestige_gain_mult = 0.2
+	health = 0.5
+
+	ruler_designer_cost = 50
+}
+
+master_executioner = {
+	category = lifestyle
+	icon = torturer # Reusing base game icon
+
+	intrigue = 3
+	prowess = 3
+	dread_baseline_add = 30
+	enemy_hard_casualty_modifier = 0.2
+
+	ruler_designer_cost = 50
+}
+
+demon_hunter = {
+	category = lifestyle
+	icon = theologian # Reusing base game icon
+
+	learning = 4
+	prowess = 2
+	monthly_piety_gain_mult = 0.2
+	clergy_opinion = 15
+
+	ruler_designer_cost = 50
+}

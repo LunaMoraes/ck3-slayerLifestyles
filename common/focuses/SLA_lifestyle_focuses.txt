@@ -1,0 +1,109 @@
+﻿slayer_beast_focus = {
+	lifestyle = slayer_lifestyle
+	
+	modifier = {
+		prowess = 3
+		martial = 1
+		advantage = 5
+	}
+
+	desc = {
+		desc = slayer_beast_focus_desc
+		desc = line_break
+	}
+
+	auto_selection_weight = {
+		value = 11
+		if = {
+			limit = {
+				has_education_martial_trigger = yes
+			}
+			add = 1500
+		}
+		if = {
+			limit = {
+				has_trait = brave
+			}
+			multiply = 3
+		}
+		if = {
+			limit = {
+				has_trait = craven
+			}
+			multiply = 0
+		}
+	}
+}
+
+slayer_human_focus = {
+	lifestyle = slayer_lifestyle
+	
+	modifier = {
+		intrigue = 2
+		prowess = 1
+		dread_baseline_add = 20
+	}
+
+	desc = {
+		desc = slayer_human_focus_desc
+		desc = line_break
+	}
+
+	auto_selection_weight = {
+		value = 11
+		if = {
+			limit = {
+				has_education_intrigue_trigger = yes
+			}
+			add = 1500
+		}
+		if = {
+			limit = {
+				has_trait = callous
+			}
+			multiply = 3
+		}
+		if = {
+			limit = {
+				has_trait = compassionate
+			}
+			multiply = 0
+		}
+	}
+}
+
+slayer_ethereal_focus = {
+	lifestyle = slayer_lifestyle
+	
+	modifier = {
+		learning = 2
+		monthly_piety = 1
+	}
+
+	desc = {
+		desc = slayer_ethereal_focus_desc
+		desc = line_break
+	}
+
+	auto_selection_weight = {
+		value = 11
+		if = {
+			limit = {
+				has_education_learning_trigger = yes
+			}
+			add = 1500
+		}
+		if = {
+			limit = {
+				has_trait = zealous
+			}
+			multiply = 3
+		}
+		if = {
+			limit = {
+				has_trait = cynical
+			}
+			multiply = 0
+		}
+	}
+}
