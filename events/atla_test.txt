@@ -1,0 +1,173 @@
+﻿namespace = atla_bending
+
+# Reaching for Perfection
+atla_bending.0001 = {
+    type = character_event
+    title = atla_bending.0001.t
+    desc = atla_bending.0001.desc
+    theme = court
+    
+    trigger = {
+        is_adult = yes
+        NOT = { faith = { religion_tag = christianity_religion } }
+        OR = {
+            faith = { religion_tag = paganism_religion }
+            faith = { religion_tag = islam_religion }
+            faith = { religion_tag = confucianism_religion }
+        }
+    }
+
+    immediate = {
+        random_courtier = {
+            limit = {
+                is_adult = yes
+                is_imprisoned = no
+                NOT = { this = root }
+            }
+            weight = {
+                base = 1
+                modifier = {
+                    add = 15
+                    has_relation_rival = root
+                }
+                modifier = {
+                    add = 10
+                    opinion = { target = root value < 0 }
+                }
+            }
+            save_scope_as = random_courtier
+        }
+    }
+
+    # Option 1: Bending challenge
+    option = {
+        name = atla_bending.0001.a
+        
+        random_list = {
+            30 = {
+                modifier = { add = 20 prowess >= 15 }
+                add_stress = -20
+                add_prestige = 150
+                scope:random_courtier = {
+                    add_opinion = { 
+                        target = root 
+                        modifier = impressed_opinion 
+                        opinion = 10
+                    }
+                }
+                add_character_modifier = { 
+                    modifier = bending_prowess_boost 
+                }
+                custom_tooltip = potential_friend_lover_tt
+            }
+            30 = {
+                modifier = { add = 15 prowess < 10 }
+                add_stress = -20
+                scope:random_courtier = {
+                    add_opinion = { 
+                        target = root 
+                        modifier = annoyed_opinion 
+                        opinion = -10
+                    }
+                }
+                add_character_modifier = { 
+                    modifier = bending_prowess_boost 
+                }
+            }
+            40 = {
+                modifier = { add = 20 prowess < 5 }
+                add_stress = 20
+                add_prestige = -50
+                scope:random_courtier = {
+                    add_opinion = { 
+                        target = root 
+                        modifier = hurt_by_bending_opinion 
+                        opinion = -20
+                    }
+                    add_trait = wounded_1
+                    set_relation_rival = root
+                }
+            }
+        }
+    }
+
+    # Option 2: Diplomatic challenge
+    option = {
+        name = atla_bending.0001.b
+        
+        random_list = {
+            40 = {
+                modifier = { add = 20 diplomacy >= 15 }
+                add_stress = -30
+            }
+            30 = {
+                modifier = { add = 15 diplomacy >= 8 diplomacy <= 14 }
+                add_stress = -20
+                scope:random_courtier = {
+                    add_opinion = { 
+                        target = root 
+                        modifier = annoyed_opinion 
+                        opinion = -10
+                    }
+                }
+            }
+            30 = {
+                modifier = { add = 20 diplomacy < 8 }
+                add_stress = 20
+                scope:random_courtier = {
+                    add_opinion = { 
+                        target = root 
+                        modifier = angry_opinion 
+                        opinion = -20
+                    }
+                    set_relation_rival = root
+                }
+            }
+        }
+    }
+
+    # Option 3: Physical reach
+    option = {
+        name = atla_bending.0001.c
+        add_prestige = -15
+        
+        random_list = {
+            50 = {
+                add_stress = -20
+                scope:random_courtier = {
+                    add_opinion = { 
+                        target = root 
+                        modifier = annoyed_opinion 
+                        opinion = -10
+                    }
+                }
+            }
+            50 = {
+                add_stress = 20
+                add_prestige = -50
+                scope:random_courtier = {
+                    add_opinion = { 
+                        target = root 
+                        modifier = spilled_food_opinion 
+                        opinion = -20
+                    }
+                    set_relation_rival = root
+                }
+            }
+        }
+    }
+
+    # Option 4: Temperate/Generous/Compassionate
+    option = {
+        name = atla_bending.0001.d
+        trigger = {
+            OR = {
+                has_trait = temperate
+                has_trait = generous
+                has_trait = compassionate
+            }
+        }
+        add_stress = -30
+        custom_tooltip = potential_friend_lover_tt
+    }
+}

@@ -1,0 +1,19 @@
+﻿impressed_opinion = {
+    opinion = 10
+}
+
+annoyed_opinion = {
+    opinion = -10
+}
+
+hurt_by_bending_opinion = {
+    opinion = -20
+}
+
+angry_opinion = {
+    opinion = -20
+}
+
+spilled_food_opinion = {
+    opinion = -20
+}

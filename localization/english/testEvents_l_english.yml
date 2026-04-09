@@ -1,0 +1,38 @@
+﻿l_english:
+ atla_bending.0001.t: "Reaching for Perfection"
+ atla_bending.0001.desc: "As night falls outside of my palace, I can finally rest after this tiresome day spent dealing with mundane papers and requests from my domain.\n\nSome of my courtiers started reciting [ROOT.Char.Custom('GetAtlaPlayName')] for my supper. Everything seems perfect on this beautiful evening until I see that my favorite [ROOT.Char.Custom('GetAtlaFood')] was put just outside of my reach by my servant, and [random_courtier.GetFirstName] is going to eat it all!\n\nThankfully, as a [ROOT.Char.Custom('GetBendingElement')]bender, I can easily get my delightful meal out of [random_courtier.GetHerHis] grip without having to move but a finger or two. Or perhaps I could ask [random_courtier.GetHerHim] to bring it closer for me?"
+ 
+ atla_bending.0001.a: "This is going to be easy with [ROOT.Char.Custom('GetBendingElement')]bending."
+ atla_bending.0001.b: "I'll ask [random_courtier.GetFirstNameNoTooltip] to bring it to me."
+ atla_bending.0001.c: "Maybe… Maybe I can just barely reach it?"
+ atla_bending.0001.d: "[random_courtier.GetSheHe|U] can keep it. I already had my fill for tonight."
+
+ # Tooltips
+ potential_friend_lover_tt: "This interaction may spark a new friendship, or perhaps something more..."
+ 
+ # Custom Loc Strings - Elements
+ atla_element_water: "water"
+ atla_element_earth: "earth"
+ atla_element_air: "air"
+
+ # Custom Loc Strings - Food
+ atla_food_dumplings: "steamed dumplings"
+ atla_food_tart: "egg tart"
+ atla_food_noodles: "bowl of fire flakes and noodles"
+ atla_food_roast: "roast duck"
+
+ # Custom Loc Strings - Plays/Poems
+ atla_play_dragons: "Love Amongst the Dragons"
+ atla_play_slipper: "The Lost Slipper"
+ atla_play_oma_shu: "The Tale of Oma and Shu"
+ atla_play_painted_lady: "The Tale of the Painted Lady"
+ atla_play_shoken: "The Complete Works of Shoken"
+ atla_play_laghima: "The Pearls of Laghima"
+ atla_play_one_armed: "The Tale of the One-Armed"
+ atla_play_histories: "The Histories of the Earth Kingdom"
+ atla_play_avatars: "The Lives of the Avatars"
+ atla_play_poems: "some beautiful poems"
+
+ # Trait & modifiers Loc Strings
+ bending_prowess_boost: "Bending Prowess"
+ bending_prowess_boost_desc: "This character has refined their bending technique, permanently increasing their martial prowess."

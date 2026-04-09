@@ -1,0 +1,4 @@
+﻿bending_prowess_boost = {
+    icon = prowess
+    prowess = 5
+}
