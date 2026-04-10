@@ -1,7 +1,8 @@
-﻿# Determines the play/poem being recited based on Religion
-defined_text = {
-    name = GetAtlaPlayName
-    
+# Determines the play/poem being recited based on Religion
+GetAtlaPlayName = {
+    type = character
+    random_valid = yes
+
     text = {
         trigger = { faith = { religion_tag = confucianism_religion } }
         localization_key = atla_play_shoken
@@ -22,8 +23,8 @@ defined_text = {
         trigger = { faith = { religion_tag = islam_religion } }
         localization_key = atla_play_histories
     }
-    
-    # General Fallbacks
+
+    # General fallbacks
     text = { localization_key = atla_play_dragons }
     text = { localization_key = atla_play_slipper }
     text = { localization_key = atla_play_avatars }
@@ -31,9 +32,9 @@ defined_text = {
 }
 
 # Determines the Element String based on Religion
-defined_text = {
-    name = GetBendingElement
-    
+GetBendingElement = {
+    type = character
+
     text = {
         trigger = { faith = { religion_tag = paganism_religion } }
         localization_key = atla_element_water
@@ -46,11 +47,18 @@ defined_text = {
         trigger = { faith = { religion_tag = confucianism_religion } }
         localization_key = atla_element_air
     }
+
+    text = {
+        fallback = yes
+        localization_key = atla_element_earth
+    }
 }
 
 # Determines a random Food
-defined_text = {
-    name = GetAtlaFood
+GetAtlaFood = {
+    type = character
+    random_valid = yes
+
     text = { localization_key = atla_food_dumplings }
     text = { localization_key = atla_food_tart }
     text = { localization_key = atla_food_noodles }
