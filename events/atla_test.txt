@@ -98,8 +98,11 @@ atla_bending.0001 = {
                         target = root 
                         modifier = hurt_by_bending_opinion 
                     }
-                    add_trait = wounded_1
-                    set_relation_rival = root
+                    increase_wounds_no_death_effect = { REASON = hurt_by_bending }
+                    progress_towards_rival_effect = {
+                        REASON = beaten_by_bending
+                        CHARACTER = root
+                    }
                 }
             }
         }

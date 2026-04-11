@@ -1,4 +1,4 @@
-random_yearly_playable_pulse = {
+﻿random_yearly_playable_pulse = {
 	on_actions = {
 		atla_bending_yearly_pulse
 	}
