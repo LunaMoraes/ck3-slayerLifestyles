@@ -1,4 +1,4 @@
-# Determines the play/poem being recited based on Religion
+﻿# Determines the play/poem being recited based on Religion
 GetAtlaPlayName = {
     type = character
     random_valid = yes

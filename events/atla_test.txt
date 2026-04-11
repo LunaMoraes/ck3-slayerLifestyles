@@ -7,20 +7,23 @@ atla_bending.0001 = {
     desc = atla_bending.0001.desc
     theme = court
     left_portrait = { character = root }
-    right_portrait = { character = scope:random_courtier } #
+    right_portrait = { character = scope:random_courtier }
     
     trigger = {
-        is_adult = yes
-
-        OR = {
-            faith = { religion_tag = paganism_religion }
-            faith = { religion_tag = islam_religion }
-            faith = { religion_tag = confucianism_religion }
-        }
+    is_adult = yes
+    OR = {
+        faith = { religion_tag = paganism_religion }
+        faith = { religion_tag = islam_religion }
+        faith = { religion_tag = confucianism_religion }
     }
+    any_courtier = {
+        is_adult = yes
+        is_imprisoned = no
+        NOT = { this = root }
+    }
+}
 
     immediate = {
-        root = { save_scope_as = main_bender }
         random_courtier = {
             limit = {
                 is_adult = yes
