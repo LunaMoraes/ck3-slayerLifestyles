@@ -10,18 +10,18 @@ atla_bending.0001 = {
     right_portrait = { character = scope:random_courtier }
     
     trigger = {
-    is_adult = yes
-    OR = {
-        faith = { religion_tag = paganism_religion }
-        faith = { religion_tag = islam_religion }
-        faith = { religion_tag = confucianism_religion }
-    }
-    any_courtier = {
         is_adult = yes
-        is_imprisoned = no
-        NOT = { this = root }
+        OR = {
+            faith = { religion_tag = paganism_religion }
+            faith = { religion_tag = islam_religion }
+            faith = { religion_tag = confucianism_religion }
+        }
+        any_courtier = {
+            is_adult = yes
+            is_imprisoned = no
+            NOT = { this = root }
+        }
     }
-}
 
     immediate = {
         random_courtier = {
@@ -52,25 +52,24 @@ atla_bending.0001 = {
             base = 10
             modifier = {
                 add = 40
-                prowess = 15
+                prowess >= high_skill_rating
             }
             modifier = {
                 add = -20
-                prowess = 5
+                prowess <= low_skill_rating
             }
         }
         
         random_list = {
             30 = {
                 custom_tooltip = potential_friend_lover_tt
-                modifier = { add = 20 prowess >= 15 }
+                modifier = { add = 20 prowess >= high_skill_rating }
                 add_stress = medium_stress_loss
                 add_prestige = medium_prestige_gain
                 scope:random_courtier = {
                     add_opinion = { 
                         target = root 
                         modifier = impressed_opinion 
-                        opinion = 10
                     }
                 }
                 add_character_modifier = { 
@@ -78,13 +77,12 @@ atla_bending.0001 = {
                 }
             }
             30 = {
-                modifier = { add = 15 prowess < 10 }
+                modifier = { add = 15 prowess < mediocre_skill_rating }
                 add_stress = medium_stress_loss
                 scope:random_courtier = {
                     add_opinion = { 
                         target = root 
                         modifier = annoyed_opinion 
-                        opinion = -10
                     }
                 }
                 add_character_modifier = { 
@@ -92,14 +90,13 @@ atla_bending.0001 = {
                 }
             }
             40 = {
-                modifier = { add = 20 prowess < 5 }
+                modifier = { add = 20 prowess < low_skill_rating }
                 add_stress = minor_stress_gain
                 add_prestige = minor_prestige_loss
                 scope:random_courtier = {
                     add_opinion = { 
                         target = root 
                         modifier = hurt_by_bending_opinion 
-                        opinion = -20
                     }
                     add_trait = wounded_1
                     set_relation_rival = root
@@ -115,42 +112,40 @@ atla_bending.0001 = {
             base = 10
             modifier = {
                 add = 40
-                diplomacy = 15
+                diplomacy >= high_skill_rating
             }
             modifier = {
                 add = 20
-                diplomacy = 8
+                diplomacy >= mediocre_skill_rating
             }
             modifier = {
                 add = -20
-                diplomacy = 7
+                diplomacy < mediocre_skill_rating
             }
         }
         
         random_list = {
             40 = {
-                modifier = { add = 20 diplomacy >= 15 }
+                modifier = { add = 20 diplomacy >= high_skill_rating }
                 add_stress = medium_stress_loss
             }
             30 = {
-                modifier = { add = 15 diplomacy >= 8 diplomacy <= 14 }
+                modifier = { add = 15 diplomacy >= mediocre_skill_rating diplomacy <= high_skill_rating }
                 add_stress = medium_stress_loss
                 scope:random_courtier = {
                     add_opinion = { 
                         target = root 
                         modifier = annoyed_opinion 
-                        opinion = -10
                     }
                 }
             }
             30 = {
-                modifier = { add = 20 diplomacy < 8 }
+                modifier = { add = 20 diplomacy < mediocre_skill_rating }
                 add_stress = minor_stress_gain
                 scope:random_courtier = {
                     add_opinion = { 
                         target = root 
                         modifier = angry_opinion 
-                        opinion = -20
                     }
                     set_relation_rival = root
                 }
@@ -166,11 +161,11 @@ atla_bending.0001 = {
             base = 10
             modifier = {
                 add = 20
-                prowess = 8
+                prowess >= mediocre_skill_rating
             }
             modifier = {
                 add = -20
-                prowess = 4
+                prowess <= low_skill_rating
             }
         }
         
@@ -181,7 +176,6 @@ atla_bending.0001 = {
                     add_opinion = { 
                         target = root 
                         modifier = annoyed_opinion 
-                        opinion = -10
                     }
                 }
             }
@@ -192,7 +186,6 @@ atla_bending.0001 = {
                     add_opinion = { 
                         target = root 
                         modifier = spilled_food_opinion 
-                        opinion = -20
                     }
                     set_relation_rival = root
                 }
@@ -216,11 +209,6 @@ atla_bending.0001 = {
             base = 5
             modifier = {
                 add = 60
-                OR = {
-                    has_trait = temperate
-                    has_trait = generous
-                    has_trait = compassionate
-                }
             }
         }
     }
