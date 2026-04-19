@@ -20,6 +20,7 @@ atla_bending.0001 = {
             is_adult = yes
             is_imprisoned = no
             NOT = { this = root }
+            NOT = { is_close_family_of = root }
         }
     }
 
@@ -29,6 +30,7 @@ atla_bending.0001 = {
                 is_adult = yes
                 is_imprisoned = no
                 NOT = { this = root }
+                NOT = { is_close_family_of = root }
             }
             weight = {
                 base = 1
@@ -62,46 +64,63 @@ atla_bending.0001 = {
         
         random_list = {
             30 = {
-                custom_tooltip = potential_friend_lover_tt
                 modifier = { add = 20 prowess >= high_skill_rating }
-                add_stress = medium_stress_loss
-                add_prestige = medium_prestige_gain
-                scope:random_courtier = {
-                    add_opinion = { 
-                        target = root 
-                        modifier = impressed_opinion 
+                send_interface_toast = {
+                    type = event_toast_effect_good
+                    title = atla_bending.0001.a.success_toast
+                    
+                    custom_tooltip = potential_friend_lover_tt
+                    add_stress = medium_stress_loss
+                    add_prestige = medium_prestige_gain
+                    scope:random_courtier = {
+                        add_opinion = { 
+                            target = root 
+                            modifier = impressed_opinion 
+                        }
                     }
-                }
-                add_character_modifier = { 
-                    modifier = bending_prowess_boost 
+                    add_character_modifier = { 
+                        modifier = bending_prowess_boost 
+                    }
                 }
             }
             30 = {
                 modifier = { add = 15 prowess < mediocre_skill_rating }
-                add_stress = medium_stress_loss
-                scope:random_courtier = {
-                    add_opinion = { 
-                        target = root 
-                        modifier = annoyed_opinion 
+                
+                send_interface_toast = {
+                    type = event_toast_effect_neutral
+                    title = atla_bending.0001.a.mixed_toast
+                    
+                    add_stress = medium_stress_loss
+                    scope:random_courtier = {
+                        add_opinion = { 
+                            target = root 
+                            modifier = annoyed_opinion 
+                        }
                     }
-                }
-                add_character_modifier = { 
-                    modifier = bending_prowess_boost 
+                    add_character_modifier = { 
+                        modifier = bending_prowess_boost 
+                    }
                 }
             }
             40 = {
                 modifier = { add = 20 prowess < low_skill_rating }
-                add_stress = minor_stress_gain
-                add_prestige = minor_prestige_loss
-                scope:random_courtier = {
-                    add_opinion = { 
-                        target = root 
-                        modifier = hurt_by_bending_opinion 
-                    }
-                    increase_wounds_no_death_effect = { REASON = hurt_by_bending }
-                    progress_towards_rival_effect = {
-                        REASON = beaten_by_bending
-                        CHARACTER = root
+                
+                send_interface_toast = {
+                    type = event_toast_effect_bad
+                    title = atla_bending.0001.a.failure_toast
+                    
+                    add_stress = minor_stress_gain
+                    add_prestige = minor_prestige_loss
+                    scope:random_courtier = {
+                        add_opinion = { 
+                            target = root 
+                            modifier = hurt_by_bending_opinion 
+                        }
+                        increase_wounds_no_death_effect = { REASON = hurt_by_bending }
+                        progress_towards_rival_effect = {
+                            REASON = beaten_by_bending
+                            CHARACTER = root
+                        }
                     }
                 }
             }
@@ -111,6 +130,8 @@ atla_bending.0001 = {
     # Option 2: Diplomatic challenge
     option = {
         name = atla_bending.0001.b
+        skill = diplomacy
+        
         ai_chance = {
             base = 10
             modifier = {
@@ -127,35 +148,59 @@ atla_bending.0001 = {
             }
         }
         
-        random_list = {
+        duel = {
+            skill = diplomacy
+            target = scope:random_courtier
+            
             40 = {
+                desc = atla_bending.0001.b.success # Keeps the prediction text in the tooltip
                 modifier = { add = 20 diplomacy >= high_skill_rating }
-                add_stress = medium_stress_loss
+                
+                send_interface_toast = {
+                    type = event_toast_effect_good
+                    title = atla_bending.0001.b.success
+                    
+                    add_stress = medium_stress_loss
+                }
             }
             30 = {
+                desc = atla_bending.0001.b.mixed
                 modifier = { add = 15 diplomacy >= mediocre_skill_rating diplomacy <= high_skill_rating }
-                add_stress = medium_stress_loss
-                scope:random_courtier = {
-                    add_opinion = { 
-                        target = root 
-                        modifier = annoyed_opinion 
+                
+                send_interface_toast = {
+                    type = event_toast_effect_neutral
+                    title = atla_bending.0001.b.mixed
+                    
+                    add_stress = medium_stress_loss
+                    scope:random_courtier = {
+                        add_opinion = { 
+                            target = root 
+                            modifier = annoyed_opinion 
+                        }
                     }
                 }
             }
             30 = {
+                desc = atla_bending.0001.b.failure
                 modifier = { add = 20 diplomacy < mediocre_skill_rating }
-                add_stress = minor_stress_gain
-                scope:random_courtier = {
-                    add_opinion = { 
-                        target = root 
-                        modifier = angry_opinion 
+                
+                send_interface_toast = {
+                    type = event_toast_effect_bad
+                    title = atla_bending.0001.b.failure
+                    
+                    add_stress = minor_stress_gain
+                    scope:random_courtier = {
+                        add_opinion = { 
+                            target = root 
+                            modifier = angry_opinion 
+                        }
+                        set_relation_rival = root
                     }
-                    set_relation_rival = root
                 }
             }
         }
     }
-
+    
     # Option 3: Physical reach
     option = {
         name = atla_bending.0001.c
@@ -174,23 +219,33 @@ atla_bending.0001 = {
         
         random_list = {
             50 = {
-                add_stress = medium_stress_loss
-                scope:random_courtier = {
-                    add_opinion = { 
-                        target = root 
-                        modifier = annoyed_opinion 
+                send_interface_toast = {
+                    type = event_toast_effect_neutral
+                    title = atla_bending.0001.c.mixed_toast
+                    
+                    add_stress = medium_stress_loss
+                    scope:random_courtier = {
+                        add_opinion = { 
+                            target = root 
+                            modifier = annoyed_opinion 
+                        }
                     }
                 }
             }
             50 = {
-                add_stress = minor_stress_gain
-                add_prestige = minor_prestige_loss
-                scope:random_courtier = {
-                    add_opinion = { 
-                        target = root 
-                        modifier = spilled_food_opinion 
+                send_interface_toast = {
+                    type = event_toast_effect_bad
+                    title = atla_bending.0001.c.failure_toast
+                    
+                    add_stress = minor_stress_gain
+                    add_prestige = minor_prestige_loss
+                    scope:random_courtier = {
+                        add_opinion = { 
+                            target = root 
+                            modifier = spilled_food_opinion 
+                        }
+                        set_relation_rival = root
                     }
-                    set_relation_rival = root
                 }
             }
         }
@@ -208,10 +263,15 @@ atla_bending.0001 = {
         }
         custom_tooltip = potential_friend_lover_tt
         add_stress = major_stress_loss
+        
         ai_chance = {
             base = 5
             modifier = {
                 add = 60
+            }
+            # Hooks into AI personality logic
+            ai_value_modifier = {
+                ai_compassion = 1 
             }
         }
     }
