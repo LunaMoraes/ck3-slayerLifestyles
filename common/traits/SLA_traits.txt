@@ -30,3 +30,8 @@ demon_hunter = {
 
 	ruler_designer_cost = 50
 }
+
+new_trait_1 = {
+	category = personality
+	icon = asd
+}
